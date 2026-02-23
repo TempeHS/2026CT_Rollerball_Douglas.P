@@ -38,6 +38,7 @@ public class Player_Controller : MonoBehaviour
         if(count >= 13)
         {
             winTextObject.SetActive(true);
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
 
@@ -47,6 +48,17 @@ public class Player_Controller : MonoBehaviour
 
         rb.AddForce(movement * speed);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+            winTextObject.gameObject.SetActive(true);
+            winTextObject.GetComponent<TextMeshProUGUI>().text = "haha loser";
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
