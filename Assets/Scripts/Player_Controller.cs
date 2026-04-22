@@ -8,6 +8,7 @@ public class Player_Controller : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject CounttextObject;
 
     private Rigidbody rb;
     private int count;
@@ -22,6 +23,7 @@ public class Player_Controller : MonoBehaviour
 
         SetCountText();
         winTextObject.SetActive(false);
+        CounttextObject.SetActive(false);
     }
 
     void OnMove(InputValue movementValue)
@@ -34,10 +36,11 @@ public class Player_Controller : MonoBehaviour
 
     void SetCountText()
     {
-        countText.text = "Score:" + count.ToString();
+        countText.text = "Orbs collected:" + count.ToString();
         if(count >= 13)
         {
             winTextObject.SetActive(true);
+            CounttextObject.SetActive(true);
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
@@ -55,7 +58,12 @@ public class Player_Controller : MonoBehaviour
         {
             Destroy(gameObject);
             winTextObject.gameObject.SetActive(true);
+            CounttextObject.SetActive(true);
             winTextObject.GetComponent<TextMeshProUGUI>().text = "haha loser";
+            if(count <= 0)
+            {
+                countText.text = "Orbs collected:" + "wow you really suck";
+            }
         }
     }
 
