@@ -17,8 +17,13 @@ public class Velociytracker : MonoBehaviour
     private float distanceTraveled;
     private float averageVelocity;
     private float EnemyDistance;
-   
+    private float AvEnemyDistance;
+    private float totalEdistance = 0f;
+    private float timer = 0f;
+
+    private bool timerRunning = true;
     private bool hasCalculated = false;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,30 +36,56 @@ public class Velociytracker : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        EnemyDistance = Vector3.Distance(Enemy.position,transform.position );
+        if (timerRunning)
+        {
+            timer += Time.deltaTime;
+
+        }
+        if (Enemy != null)
+        {
+            EnemyDistance = Vector3.Distance(Enemy.position, transform.position);
+            totalEdistance += EnemyDistance;
+        }
         distanceTraveled += Vector3.Distance(transform.position, lastPosition);
         lastPosition = transform.position;
         if(!hasCalculated && countTracker.count >= countRequired)
         {
-            averageVelocity = Mathf.Round(distanceTraveled / countRequired);
+            timerRunning = false;
+            averageVelocity = Mathf.Round(distanceTraveled / timer);
+            AvEnemyDistance = Mathf.Round(totalEdistance / timer);
+            AvEnemyDistance = Mathf.Floor((AvEnemyDistance / 2) / 10);
+
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             hasCalculated = true;
 
-            
             VelocityTextObject.SetActive(true);
-            velocityText.text = "average velocity: " + averageVelocity.ToString () + " M/S";
+            velocityText.text = "average velocity: " + averageVelocity.ToString() + " M/S";
+            EnemyDistanceObject.SetActive(true);
+            enemyDistance.text = "average enemy distance: " + AvEnemyDistance.ToString() + "M";
+
+            Debug.Log("time:" + timer);
         }
-        Debug.Log(EnemyDistance);
+        
+        
     }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            averageVelocity = Mathf.Round(distanceTraveled / countRequired);
+            timerRunning = false;
+            averageVelocity = Mathf.Round(distanceTraveled / timer);
+            AvEnemyDistance = Mathf.Round(totalEdistance / timer);
+            AvEnemyDistance = Mathf.Floor((AvEnemyDistance / 2) / 10);
+
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
             hasCalculated = true;
 
-            
             VelocityTextObject.SetActive(true);
             velocityText.text = "average velocity: " + averageVelocity.ToString() + " M/S";
+            EnemyDistanceObject.SetActive(true);
+            enemyDistance.text = "average enemy distance: " + AvEnemyDistance.ToString() + "M";
+
+            Debug.Log("time:" + timer);
         }
     }
 }
