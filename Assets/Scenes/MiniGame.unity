@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a7e6c063909724d9c6a87218ca64c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 23
   countText: {fileID: 339421361}
   winTextObject: {fileID: 1364901257}
   CounttextObject: {fileID: 339421359}
@@ -2137,10 +2137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6244d5207b54c0c40be7874a6c65477b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finalscore: {fileID: 0}
   velocityText: {fileID: 1716295529}
+  enemyDistance: {fileID: 0}
   countTracker: {fileID: 1003381208}
   countRequired: 13
   VelocityTextObject: {fileID: 1716295527}
+  EnemyDistanceObject: {fileID: 0}
+  FinalScoreObject: {fileID: 0}
+  Enemy: {fileID: 0}
 --- !u!1001 &1061330729
 PrefabInstance:
   m_ObjectHideFlags: 0
