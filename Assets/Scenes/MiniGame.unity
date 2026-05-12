@@ -2051,10 +2051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-<<<<<<< HEAD
   speed: 23
-=======
->>>>>>> parent of 2f85178 (minor speed change)
   countText: {fileID: 339421361}
   winTextObject: {fileID: 1364901257}
   CounttextObject: {fileID: 339421359}
@@ -2142,7 +2139,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
-<<<<<<< HEAD
   finalscore: {fileID: 2111506957}
   velocityText: {fileID: 1716295529}
   enemyDistance: {fileID: 1319985474}
@@ -2154,19 +2150,15 @@ MonoBehaviour:
   Enemy: {fileID: 484950897}
 =======
   finalscore: {fileID: 0}
-=======
->>>>>>> parent of 2f85178 (minor speed change)
   velocityText: {fileID: 1716295529}
+  enemyDistance: {fileID: 0}
   countTracker: {fileID: 1003381208}
   countRequired: 13
   VelocityTextObject: {fileID: 1716295527}
-<<<<<<< HEAD
   EnemyDistanceObject: {fileID: 0}
   FinalScoreObject: {fileID: 0}
   Enemy: {fileID: 0}
 >>>>>>> 2f851782fa020856e364f183c9ce9c90d31e0658
-=======
->>>>>>> parent of 2f85178 (minor speed change)
 --- !u!1001 &1061330729
 PrefabInstance:
   m_ObjectHideFlags: 0
