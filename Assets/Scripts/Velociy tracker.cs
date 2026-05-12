@@ -83,7 +83,7 @@ public class Velociytracker : MonoBehaviour
             timerRunning = false;
             averageVelocity = Mathf.Round(distanceTraveled / timer);
             AvEnemyDistance = Mathf.Round(totalEdistance / timer);
-            AvEnemyDistance = Mathf.Floor((AvEnemyDistance / 2) / 100);
+            AvEnemyDistance = Mathf.Floor((AvEnemyDistance / 2) / 10);
             FinalScore = Mathf.Floor((averageVelocity - AvEnemyDistance) * countTracker.count);
 
             Destroy(GameObject.FindGameObjectWithTag("Enemy"));
