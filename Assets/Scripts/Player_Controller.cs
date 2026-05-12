@@ -41,7 +41,7 @@ public class Player_Controller : MonoBehaviour
         {
             winTextObject.SetActive(true);
             CounttextObject.SetActive(true);
-           
+            Destroy(GameObject.FindGameObjectWithTag("Enemy"));
         }
     }
 
