@@ -47,9 +47,29 @@ public class Player_Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f,movementY);
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+        if (movement.sqrMagnitude > 0.001f)
+        {
+            float currentSpeed = 5f;
+            Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+                if (horizontalVelocity.sqrMagnitude > 0.001f)
+            {
+                Vector3 inputDir = movement.normalized;
+                Vector3 velDir = horizontalVelocity.normalized;
+
+                float dot = Vector3.Dot(inputDir, velDir);
+
+                // dot < 0 means opposite directions
+                if (dot < 0f)
+                {
+                    // Boost acceleration when reversing
+                    currentSpeed *= 2f; // try 2, 3, etc.
+                }
+            }
+            rb.AddForce(movement * currentSpeed);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
