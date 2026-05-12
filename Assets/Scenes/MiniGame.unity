@@ -2051,6 +2051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
+  speed: 23
   countText: {fileID: 339421361}
   winTextObject: {fileID: 1364901257}
   CounttextObject: {fileID: 339421359}
